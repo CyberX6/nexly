@@ -34,6 +34,10 @@ interface AuthContextType {
   loading: boolean;
   signUp: (email: string, password: string, userType: 'brand' | 'creator', fullName: string) => Promise<{ error: Error | null }>;
   signIn: (email: string, password: string) => Promise<{ error: Error | null }>;
+  signInWithProvider: (
+    provider: "google" | "facebook",
+    callbackURL?: string,
+  ) => Promise<{ error: Error | null }>;
   signOut: () => Promise<void>;
   updateProfile: (updates: Partial<Profile>) => Promise<{ error: Error | null }>;
   refreshProfile: () => Promise<void>;
@@ -97,6 +101,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return { error: result.error ? new Error(result.error.message) : null };
   };
 
+  const handleSignInWithProvider = async (
+    provider: "google" | "facebook",
+    callbackURL?: string,
+  ): Promise<{ error: Error | null }> => {
+    const result = await baSignIn.social({
+      provider,
+      callbackURL: callbackURL ?? "http://localhost:3000/feed",
+    });
+
+    return { error: result.error ? new Error(result.error.message) : null };
+  };
+
   const handleSignOut = async () => {
     await baSignOut();
   };
@@ -116,6 +132,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         loading: isPending,
         signUp: handleSignUp,
         signIn: handleSignIn,
+        signInWithProvider: handleSignInWithProvider,
         signOut: handleSignOut,
         updateProfile,
         refreshProfile,

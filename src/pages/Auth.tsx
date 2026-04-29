@@ -26,8 +26,9 @@ const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { user, profile, signUp, signIn } = useAuth();
+  const { user, profile, signUp, signIn, signInWithProvider } = useAuth();
   const { toast } = useToast();
+  const oauthCallbackURL = "http://localhost:3000/feed";
 
   // Redirect if already logged in
   useEffect(() => {
@@ -80,6 +81,42 @@ const Auth = () => {
       setUserType(null);
     }
   };
+
+  const handleSocialAuth = async (provider: "google" | "facebook") => {
+    setIsLoading(true);
+    const { error } = await signInWithProvider(provider, oauthCallbackURL);
+    if (error) {
+      toast({
+        title: "OAuth error",
+        description: error.message || `Unable to continue with ${provider}`,
+        variant: "destructive",
+      });
+      setIsLoading(false);
+    }
+  };
+
+  const SocialButtons = () => (
+    <div className="space-y-3">
+      <Button
+        type="button"
+        variant="outline"
+        className="w-full h-12"
+        onClick={() => handleSocialAuth("google")}
+        disabled={isLoading}
+      >
+        Continue with Google
+      </Button>
+      <Button
+        type="button"
+        variant="outline"
+        className="w-full h-12"
+        onClick={() => handleSocialAuth("facebook")}
+        disabled={isLoading}
+      >
+        Continue with Facebook
+      </Button>
+    </div>
+  );
 
   return (
     <div className="min-h-screen gradient-hero flex">
@@ -193,6 +230,17 @@ const Auth = () => {
                     Log in
                   </button>
                 </p>
+                <div className="my-6">
+                  <div className="relative">
+                    <div className="absolute inset-0 flex items-center">
+                      <span className="w-full border-t" />
+                    </div>
+                    <div className="relative flex justify-center text-xs uppercase">
+                      <span className="bg-background px-2 text-muted-foreground">or continue with</span>
+                    </div>
+                  </div>
+                </div>
+                <SocialButtons />
               </div>
             </div>
           )}
@@ -286,6 +334,19 @@ const Auth = () => {
                   {isLoading ? "Loading..." : mode === "signup" ? "Create Account" : "Log In"}
                 </Button>
               </form>
+
+              <div className="my-6">
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <span className="w-full border-t" />
+                  </div>
+                  <div className="relative flex justify-center text-xs uppercase">
+                    <span className="bg-background px-2 text-muted-foreground">or continue with</span>
+                  </div>
+                </div>
+              </div>
+
+              <SocialButtons />
 
               <div className="mt-6 text-center">
                 <p className="text-muted-foreground">

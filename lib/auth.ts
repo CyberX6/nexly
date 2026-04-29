@@ -24,16 +24,16 @@ export const auth = betterAuth({
 
   socialProviders: {
     google: {
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      clientId: process.env.GOOGLE_CLIENT_ID ?? "GOOGLE_CLIENT_ID_PLACEHOLDER",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "GOOGLE_CLIENT_SECRET_PLACEHOLDER",
     },
     facebook: {
-      clientId: process.env.FACEBOOK_CLIENT_ID!,
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
+      clientId: process.env.FACEBOOK_CLIENT_ID ?? "FACEBOOK_CLIENT_ID_PLACEHOLDER",
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET ?? "FACEBOOK_CLIENT_SECRET_PLACEHOLDER",
     },
   },
 
-  baseURL: process.env.BETTER_AUTH_URL ?? "http://localhost:3000",
+  baseURL: "http://localhost:3000",
   secret: process.env.BETTER_AUTH_SECRET!,
 });
 

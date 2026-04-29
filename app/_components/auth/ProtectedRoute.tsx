@@ -44,7 +44,7 @@ const ProtectedRoute = ({ children, requiredType }: ProtectedRouteProps) => {
   const isBrand = profile.user_type === "brand";
   const onboardingComplete = isBrand ? !!profile.industry : !!profile.niche;
 
-  if (!onboardingComplete) {
+  if (onboardingComplete) {
     return <RedirectTo path="/onboarding" />;
   }
 
