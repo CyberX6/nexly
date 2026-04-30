@@ -6,7 +6,8 @@ const useCases = [
   {
     icon: Building2,
     title: "Influencer Marketing Agency Founder",
-    description: "They need an affordable, scalable influencer marketing tool. Nexly offers cost-effectiveness and helps them deliver outstanding client results without overstretching their budget.",
+    description:
+      "They need an affordable, scalable influencer marketing tool. Nexly offers cost-effectiveness and helps them deliver outstanding client results without overstretching their budget.",
     color: "bg-purple-100",
     iconColor: "text-purple-600",
     image: "bg-gradient-to-br from-purple-400 to-purple-600",
@@ -14,7 +15,8 @@ const useCases = [
   {
     icon: Sparkles,
     title: "Creative Brand Owner",
-    description: "They need time-saving influencer marketing solutions. Nexly streamlines their discovery and outreach processes, enhancing their efficiency and campaign results.",
+    description:
+      "They need time-saving influencer marketing solutions. Nexly streamlines their discovery and outreach processes, enhancing their efficiency and campaign results.",
     color: "bg-blue-100",
     iconColor: "text-blue-600",
     image: "bg-gradient-to-br from-blue-400 to-cyan-500",
@@ -22,7 +24,8 @@ const useCases = [
   {
     icon: Rocket,
     title: "Brand New Startup Entrepreneur",
-    description: "This solopreneur seeks a low-risk influencer marketing software. Nexly offers them a free trial, providing a transparent path to amplify their personal business growth.",
+    description:
+      "This solopreneur seeks a low-risk influencer marketing software. Nexly offers them a free trial, providing a transparent path to amplify their personal business growth.",
     color: "bg-orange-100",
     iconColor: "text-orange-600",
     image: "bg-gradient-to-br from-orange-400 to-pink-500",
@@ -44,7 +47,8 @@ const UseCasesSection = () => {
             Nexly use cases <span className="inline-block">✨</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Nexly empowers users to overcome challenges, maximize ROI, and achieve their influencer marketing objectives.
+            Nexly empowers users to overcome challenges, maximize ROI, and
+            achieve their influencer marketing objectives.
           </p>
         </motion.div>
 
@@ -61,7 +65,9 @@ const UseCasesSection = () => {
             >
               <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-full flex flex-col">
                 {/* Image/Icon Area */}
-                <div className={`${useCase.image} h-48 flex items-center justify-center relative`}>
+                <div
+                  className={`${useCase.image} h-48 flex items-center justify-center relative`}
+                >
                   <div className="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
                     <useCase.icon size={48} className="text-white" />
                   </div>
@@ -78,21 +84,21 @@ const UseCasesSection = () => {
                   <p className="text-muted-foreground text-sm leading-relaxed flex-1">
                     {useCase.description}
                   </p>
-                  
+
                   {/* CTA Link */}
-                  <Link 
-                    href="/auth" 
+                  <Link
+                    href="/auth"
                     className="inline-flex items-center gap-2 text-primary font-semibold mt-4 hover:gap-3 transition-all group/link text-sm"
                   >
                     Discover Use Case
-                    <svg 
-                      className="w-4 h-4 transition-transform group-hover/link:translate-x-1" 
-                      viewBox="0 0 24 24" 
-                      fill="none" 
-                      stroke="currentColor" 
+                    <svg
+                      className="w-4 h-4 transition-transform group-hover/link:translate-x-1"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
                       strokeWidth="2"
                     >
-                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                      <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </Link>
                 </div>

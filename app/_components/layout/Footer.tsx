@@ -51,21 +51,9 @@ const Footer = () => {
               </span>
             </a>
             <p className="text-muted-foreground mb-6 max-w-xs">
-              The leading marketplace connecting brands with authentic content 
+              The leading marketplace connecting brands with authentic content
               creators for impactful collaborations.
             </p>
-            <div className="flex gap-3">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-lg hover:bg-primary/10 transition-colors"
-                  aria-label={link.name}
-                >
-                  {link.icon}
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Links */}
@@ -96,13 +84,22 @@ const Footer = () => {
             © {new Date().getFullYear()} Nexly. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
               Privacy
             </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
               Terms
             </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
               Cookies
             </a>
           </div>

@@ -42,14 +42,17 @@ const HeroSection = () => {
 
             {/* Subheadline */}
             <p className="text-base md:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed">
-              The go-to Influencer Marketing Software for small businesses and startups. 
-              Say goodbye to time-consuming influencer recruitment and say hello to finding 
-              and hiring creators in record time.
+              The go-to Influencer Marketing Software for small businesses and
+              startups. Say goodbye to time-consuming influencer recruitment and
+              say hello to finding and hiring creators in record time.
             </p>
 
             {/* CTA Button */}
             <div className="flex flex-col sm:flex-row items-start gap-4 mb-6">
-              <Button className="btn-gradient text-base h-12 px-8 gap-2 shadow-xl rounded-full" asChild>
+              <Button
+                className="btn-gradient text-base h-12 px-8 gap-2 shadow-xl rounded-full"
+                asChild
+              >
                 <Link href="/auth">
                   Start for Free
                   <ArrowRight size={18} />
@@ -78,7 +81,11 @@ const HeroSection = () => {
           <motion.div
             initial={{ opacity: 0, x: 60, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
+            transition={{
+              duration: 0.8,
+              delay: 0.2,
+              ease: [0.25, 0.4, 0.25, 1],
+            }}
             className="relative lg:-mr-16 xl:-mr-24"
           >
             <Image
