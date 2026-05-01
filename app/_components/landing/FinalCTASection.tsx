@@ -23,9 +23,9 @@ const FinalCTASection = () => {
               Start using Nexly for free 🌟
             </h2>
             <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-              Embark freely and witness Nexly's magic firsthand. When the stars align for growth, 
-              scale at your own rhythm. Freedom to cancel anytime, no pressure, no hidden fees – 
-              just endless possibilities.
+              Embark freely and witness Nexly's magic firsthand. When the stars
+              align for growth, scale at your own rhythm. Freedom to cancel
+              anytime, no pressure, no hidden fees – just endless possibilities.
             </p>
           </motion.div>
 
@@ -36,8 +36,8 @@ const FinalCTASection = () => {
             transition={{ delay: 0.1 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
           >
-            <Button 
-              className="btn-gradient text-base h-14 px-10 gap-2 shadow-xl rounded-full" 
+            <Button
+              className="btn-gradient text-base h-14 px-10 gap-2 shadow-xl rounded-full"
               asChild
             >
               <Link href="/auth">
@@ -46,8 +46,8 @@ const FinalCTASection = () => {
               </Link>
             </Button>
 
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               className="h-14 px-8 rounded-full border-2 gap-2"
               asChild
             >
@@ -56,28 +56,6 @@ const FinalCTASection = () => {
                 Or download our free extension
               </Link>
             </Button>
-          </motion.div>
-
-          {/* Trust indicators */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground"
-          >
-            <div className="flex items-center gap-2">
-              <span className="text-lg">✋</span>
-              <span>No credit card required</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-lg">🌱</span>
-              <span>Cancel anytime</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-lg">⚡</span>
-              <span>5mn set-up</span>
-            </div>
           </motion.div>
         </div>
       </div>
