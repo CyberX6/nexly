@@ -2,7 +2,13 @@
 
 import { useRef } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
-import { Mail, Zap, Clock, CheckCircle2, ArrowRight, Send, Sparkles } from "lucide-react";
+import { Mail, Zap, Clock, CheckCircle2, ArrowRight, Send } from "lucide-react";
+import Image from "next/image";
+import summerKickoff from "@/assets/Summer Kick-off .png";
+import novaBeautyImg from "@/assets/nova.beauty.png";
+import techguruImg from "@/assets/techguru.jpg";
+import fitlifeImg from "@/assets/fitlife.jpg";
+import styleWorldImg from "@/assets/style.world.jpg";
 
 const fadeUp: Variants = { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0 } };
 const stagger: Variants = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
@@ -43,8 +49,8 @@ export function OutreachSection() {
               {/* Campaign brief card */}
               <div className="p-5">
                 <div className="rounded-2xl p-4 mb-4 flex items-start gap-4" style={{ background: "var(--bg-card-hover)", border: "1px solid var(--border-card)" }}>
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 shrink-0 flex items-center justify-center">
-                    <Sparkles size={22} className="text-white" />
+                  <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0">
+                    <Image src={summerKickoff} alt="Summer Kick-off" width={56} height={56} className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <div className="text-[10px] text-slate-500 mb-0.5">Campaign Brief</div>
@@ -68,10 +74,10 @@ export function OutreachSection() {
                   <div className="text-[11px] font-semibold text-slate-500 mb-2.5">Bulk outreach — 48 creators queued</div>
                   <div className="space-y-2">
                     {[
-                      { name: "@nova.beauty", status: "Opened", color: "#fcd34d" },
-                      { name: "@techguru", status: "Replied", color: "#34d399" },
-                      { name: "@fitlife.co", status: "Sent", color: CYAN },
-                      { name: "@style.world", status: "Pending", color: "#475569" },
+                      { name: "@nova.beauty", status: "Opened", color: "#fcd34d", img: novaBeautyImg },
+                      { name: "@techguru", status: "Replied", color: "#34d399", img: techguruImg },
+                      { name: "@fitlife.co", status: "Sent", color: CYAN, img: fitlifeImg },
+                      { name: "@style.world", status: "Pending", color: "#475569", img: styleWorldImg },
                     ].map((item, i) => (
                       <motion.div
                         key={i}
@@ -80,7 +86,9 @@ export function OutreachSection() {
                         transition={{ delay: 0.4 + i * 0.1 }}
                         className="flex items-center gap-2.5"
                       >
-                        <div className="w-6 h-6 rounded-full bg-gradient-to-br from-slate-600 to-slate-700 shrink-0" />
+                        <div className="w-6 h-6 rounded-full overflow-hidden shrink-0">
+                          <Image src={item.img} alt={item.name} width={24} height={24} className="w-full h-full object-cover" />
+                        </div>
                         <span className="text-[11px] text-slate-300 flex-1">{item.name}</span>
                         <div className="flex items-center gap-1 text-[9px] font-medium px-2 py-0.5 rounded-full" style={{ background: `${item.color}15`, color: item.color }}>
                           {item.status}
@@ -120,8 +128,8 @@ export function OutreachSection() {
                 { icon: CheckCircle2, text: "Track opens, replies, and negotiations in your unified inbox" },
                 { icon: Send, text: "One-click accept flow for creators — fewer drop-offs, faster deals" },
               ].map((item, i) => (
-                <motion.li key={i} variants={fadeUp} transition={{ duration: 0.5 }} className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style={{ background: "rgba(6,182,212,0.12)", border: "1px solid rgba(6,182,212,0.25)" }}>
+                <motion.li key={i} variants={fadeUp} transition={{ duration: 0.5 }} className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(6,182,212,0.12)", border: "1px solid rgba(6,182,212,0.25)" }}>
                     <item.icon size={15} style={{ color: CYAN }} />
                   </div>
                   <span className="text-slate-300 text-sm leading-relaxed">{item.text}</span>

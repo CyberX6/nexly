@@ -197,16 +197,16 @@ export function BentoSection() {
             {/* Inbox mockup */}
             <div className="space-y-2">
               {[
-                { brand: "Nike Collab", msg: "We'd love to work with you on...", time: "2m", unread: true, color: "from-orange-500 to-red-500" },
-                { brand: "Glossier", msg: "Your proposal has been accepted!", time: "1h", unread: true, color: "from-pink-400 to-rose-500" },
-                { brand: "Notion", msg: "Re: Campaign brief — attached", time: "3h", unread: false, color: "from-slate-600 to-slate-700" },
+                { brand: "Adidas Collab", msg: "We'd love to work with you on...", time: "2m", unread: true, avatarBg: "#111111", avatarColor: "#ffffff", initial: "A" },
+                { brand: "Fenty Beauty", msg: "Your proposal has been accepted!", time: "1h", unread: true, avatarBg: "#6b2737", avatarColor: "#f9a8d4", initial: "F" },
+                { brand: "Spotify", msg: "Re: Campaign brief — attached", time: "3h", unread: false, avatarBg: "#1db954", avatarColor: "#000000", initial: "S" },
               ].map((item, i) => (
                 <div
                   key={i}
                   className="flex items-center gap-2.5 rounded-xl p-2.5"
                   style={{ background: item.unread ? "var(--bg-card-hover)" : "rgba(255,255,255,0.02)", border: `1px solid rgba(255,255,255,${item.unread ? "0.08" : "0.04"})` }}
                 >
-                  <div className={`w-7 h-7 rounded-full bg-gradient-to-br ${item.color} shrink-0`} />
+                  <div className="w-7 h-7 rounded-full shrink-0 flex items-center justify-center text-[10px] font-bold" style={{ background: item.avatarBg, color: item.avatarColor }}>{item.initial}</div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
                       <span className="text-[11px] font-semibold text-slate-200 truncate">{item.brand}</span>

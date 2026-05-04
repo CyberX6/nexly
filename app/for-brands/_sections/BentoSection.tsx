@@ -14,6 +14,8 @@ import {
   Mail,
   TrendingUp,
 } from "lucide-react";
+import Image from "next/image";
+import nova1 from "@/assets/nova1.png";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 32 },
@@ -127,27 +129,82 @@ export function BentoSection() {
             {/* Creator cards mockup */}
             <div className="flex gap-3 flex-wrap">
               {[
-                { match: 96, niche: "Beauty", followers: "2.4M", color: "from-pink-500 to-rose-500", eng: "4.8%" },
-                { match: 91, niche: "Lifestyle", followers: "1.1M", color: "from-violet-500 to-purple-600", eng: "6.2%" },
-                { match: 88, niche: "Tech", followers: "890K", color: "from-blue-500 to-cyan-500", eng: "5.1%" },
+                {
+                  label: "Beauty", followers: "2.4M", match: 96,
+                  barGradient: "from-pink-500 to-rose-400",
+                  glow: "rgba(244,114,182,0.5)",
+                  iconBg: "rgba(244,114,182,0.08)",
+                  icon: (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                      <defs><linearGradient id="fb-beauty-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#f472b6"/><stop offset="100%" stopColor="#fb7185"/></linearGradient></defs>
+                      <path d="M10 2.5C10 2.5 10.5 1 12 1s2 1.5 2 1.5L13.5 6h-3L10 2.5z" stroke="url(#fb-beauty-grad)" strokeWidth="1.2" strokeLinejoin="round"/>
+                      <rect x="9.5" y="6" width="5" height="8" rx="0.5" stroke="url(#fb-beauty-grad)" strokeWidth="1.2"/>
+                      <line x1="9.5" y1="9" x2="14.5" y2="9" stroke="url(#fb-beauty-grad)" strokeWidth="1" opacity="0.6"/>
+                      <rect x="8.5" y="14" width="7" height="2.5" rx="0.5" stroke="url(#fb-beauty-grad)" strokeWidth="1.2"/>
+                      <rect x="9" y="16.5" width="6" height="3.5" rx="1" stroke="url(#fb-beauty-grad)" strokeWidth="1.2"/>
+                    </svg>
+                  ),
+                },
+                {
+                  label: "Tech", followers: "1.1M", match: 91,
+                  barGradient: "from-blue-500 to-cyan-400",
+                  glow: "rgba(96,165,250,0.5)",
+                  iconBg: "rgba(96,165,250,0.08)",
+                  icon: (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                      <defs><linearGradient id="fb-tech-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#60a5fa"/><stop offset="100%" stopColor="#22d3ee"/></linearGradient></defs>
+                      <rect x="2" y="4" width="20" height="13" rx="2" stroke="url(#fb-tech-grad)" strokeWidth="1.3"/>
+                      <path d="M8 20h8M12 17v3" stroke="url(#fb-tech-grad)" strokeWidth="1.3" strokeLinecap="round"/>
+                      <path d="M7 9l2.5 2.5L7 14" stroke="url(#fb-tech-grad)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M13 13h3" stroke="url(#fb-tech-grad)" strokeWidth="1.3" strokeLinecap="round" opacity="0.7"/>
+                    </svg>
+                  ),
+                },
+                {
+                  label: "Gaming", followers: "890K", match: 88,
+                  barGradient: "from-purple-500 to-indigo-400",
+                  glow: "rgba(167,139,250,0.5)",
+                  iconBg: "rgba(129,140,248,0.08)",
+                  icon: (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                      <defs><linearGradient id="fb-gaming-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#a78bfa"/><stop offset="100%" stopColor="#818cf8"/></linearGradient></defs>
+                      <rect x="2" y="7" width="20" height="12" rx="3.5" stroke="url(#fb-gaming-grad)" strokeWidth="1.3"/>
+                      <path d="M8 11v4M6 13h4" stroke="url(#fb-gaming-grad)" strokeWidth="1.3" strokeLinecap="round"/>
+                      <circle cx="16" cy="12" r="1" fill="url(#fb-gaming-grad)" opacity="0.8"/>
+                      <circle cx="18.5" cy="13.5" r="1" fill="url(#fb-gaming-grad)" opacity="0.8"/>
+                      <circle cx="16" cy="15" r="1" fill="url(#fb-gaming-grad)" opacity="0.8"/>
+                      <circle cx="13.5" cy="13.5" r="1" fill="url(#fb-gaming-grad)" opacity="0.8"/>
+                    </svg>
+                  ),
+                },
               ].map((c, i) => (
                 <div
                   key={i}
                   className="flex-1 min-w-[120px] rounded-2xl p-3 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03]"
                   style={{ background: "var(--bg-card-hover)", border: "1px solid var(--border-card-strong)" }}
                 >
-                  <div className="flex items-center gap-2 mb-2.5">
-                    <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${c.color} shrink-0`} />
-                    <div className="min-w-0">
-                      <div className="h-2 rounded mb-1" style={{ background: "rgba(255,255,255,0.15)", width: "60px" }} />
-                      <div className="text-[10px] text-slate-500">{c.followers}</div>
-                    </div>
+                  <div
+                    className="w-8 h-8 rounded-xl flex items-center justify-center mb-2 shrink-0"
+                    style={{ background: c.iconBg }}
+                  >
+                    {c.icon}
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="px-2 py-0.5 rounded-full text-[10px]" style={{ background: "rgba(124,58,237,0.2)", color: "#c4b5fd" }}>{c.niche}</span>
+                  {/* Animated progress bar */}
+                  <div className="h-1.5 rounded-full mb-1 bg-white/5 overflow-hidden">
+                    <div
+                      className={`h-full rounded-full bg-gradient-to-r ${c.barGradient} transition-all duration-700 ease-out`}
+                      style={{
+                        width: isInView ? `${c.match}%` : "0%",
+                        transitionDelay: `${0.3 + i * 0.12}s`,
+                        boxShadow: `0 0 6px 1px ${c.glow}`,
+                      }}
+                    />
+                  </div>
+                  <div className="text-[10px] text-slate-500">{c.followers}</div>
+                  <div className="mt-1 flex items-center justify-between">
+                    <span className="text-[10px] text-slate-400">{c.label}</span>
                     <span className="text-xs font-bold text-emerald-400">{c.match}%</span>
                   </div>
-                  <div className="mt-1.5 text-[10px] text-slate-600">Eng: {c.eng}</div>
                 </div>
               ))}
             </div>
@@ -256,9 +313,9 @@ export function BentoSection() {
                 </div>
               </div>
               <div className="p-3 flex items-center gap-2">
-                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 shrink-0" />
+                <Image src={nova1} alt="Nova Beauty" width={36} height={36} className="w-9 h-9 rounded-full object-cover shrink-0" />
                 <div>
-                  <div className="h-1.5 rounded mb-1" style={{ background: "rgba(255,255,255,0.18)", width: 56 }} />
+                  <div className="text-[10px] font-semibold text-slate-200">Nova Beauty</div>
                   <div className="text-[9px] text-slate-600">1.8M followers · Beauty</div>
                 </div>
                 <button
@@ -298,10 +355,10 @@ export function BentoSection() {
                 <span>Last Contact</span>
               </div>
               {[
-                { name: "@nova.style", platform: "TikTok", status: "Active", statusColor: "#34d399", days: "Today", avatarColor: "from-pink-500 to-rose-500" },
-                { name: "@fitlife.co", platform: "Instagram", status: "Negotiating", statusColor: "#fcd34d", days: "2d ago", avatarColor: "from-amber-500 to-orange-500" },
-                { name: "@techguru", platform: "YouTube", status: "Pending", statusColor: "#7dd3fc", days: "5d ago", avatarColor: "from-blue-500 to-cyan-500" },
-                { name: "@travel.joe", platform: "TikTok", status: "Completed", statusColor: "#a78bfa", days: "1w ago", avatarColor: "from-violet-500 to-purple-600" },
+                { name: "@nova.style", platform: "TikTok", status: "Active", statusColor: "#34d399", days: "Today", avatarBg: "rgba(244,114,182,0.18)", avatarColor: "#f472b6" },
+                { name: "@fitlife.co", platform: "Instagram", status: "Negotiating", statusColor: "#fcd34d", days: "2d ago", avatarBg: "rgba(251,191,36,0.18)", avatarColor: "#fbbf24" },
+                { name: "@techguru", platform: "YouTube", status: "Pending", statusColor: "#7dd3fc", days: "5d ago", avatarBg: "rgba(96,165,250,0.18)", avatarColor: "#60a5fa" },
+                { name: "@travel.joe", platform: "TikTok", status: "Completed", statusColor: "#a78bfa", days: "1w ago", avatarBg: "rgba(167,139,250,0.18)", avatarColor: "#a78bfa" },
               ].map((row, i) => (
                 <div
                   key={i}
@@ -309,7 +366,12 @@ export function BentoSection() {
                   style={{ borderBottom: i < 3 ? "1px solid var(--bg-card-hover)" : "none" }}
                 >
                   <div className="flex items-center gap-2">
-                    <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${row.avatarColor} shrink-0`} />
+                    <div
+                      className="w-6 h-6 rounded-lg flex items-center justify-center shrink-0 text-[10px] font-bold"
+                      style={{ background: row.avatarBg, color: row.avatarColor }}
+                    >
+                      {row.name.replace("@", "").charAt(0).toUpperCase()}
+                    </div>
                     <span className="text-xs text-slate-300 truncate">{row.name}</span>
                   </div>
                   <span className="text-[11px] text-slate-500">{row.platform}</span>

@@ -3,6 +3,10 @@
 import { useRef, useState } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
 import { Search, CheckCircle2, ArrowRight, Instagram, Youtube, Twitter, Sparkles } from "lucide-react";
+import Image from "next/image";
+import liamImg from "@/assets/liam.jpg";
+import aishaImg from "@/assets/aisha.jpg";
+import marcusImg from "@/assets/marucs.jpg";
 
 const fadeUp: Variants = { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0 } };
 const stagger: Variants = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
@@ -11,9 +15,9 @@ const PURPLE = "#a78bfa";
 const CYAN = "#67e8f9";
 
 const creators = [
-  { name: "Liam S.", handle: "@TheTechLiam", niche: "Tech", followers: "55K", match: 91, color: "from-blue-500 to-cyan-500" },
-  { name: "Aisha K.", handle: "@StyleAisha", niche: "Fashion", followers: "120K", match: 93, color: "from-pink-500 to-rose-600" },
-  { name: "Marcus V.", handle: "@UrbanMotion", niche: "Video", followers: "88K", match: 89, color: "from-amber-500 to-orange-500" },
+  { name: "Liam S.", handle: "@TheTechLiam", niche: "Tech", followers: "55K", match: 91, color: "from-blue-500 to-cyan-500", img: liamImg },
+  { name: "Aisha K.", handle: "@StyleAisha", niche: "Fashion", followers: "120K", match: 93, color: "from-pink-500 to-rose-600", img: aishaImg },
+  { name: "Marcus V.", handle: "@UrbanMotion", niche: "Video", followers: "88K", match: 89, color: "from-amber-500 to-orange-500", img: marcusImg },
 ];
 
 const platforms = [
@@ -143,8 +147,15 @@ export function SearchSection() {
                       className="rounded-2xl overflow-hidden transition-all hover:scale-[1.03] cursor-pointer"
                       style={{ background: "var(--bg-card-hover)", border: "1px solid var(--border-card)" }}
                     >
-                      <div className={`h-20 w-full bg-gradient-to-br ${c.color} relative`}>
-                        <div className="absolute top-2 right-2 text-[9px] font-bold px-1.5 py-0.5 rounded-full text-white" style={{ background: "rgba(0,0,0,0.5)" }}>
+                      <div className="relative h-20 w-full overflow-hidden">
+                        <Image
+                          src={c.img}
+                          alt={c.name}
+                          fill
+                          className="object-cover object-top"
+                          sizes="160px"
+                        />
+                        <div className="absolute top-2 right-2 text-[9px] font-bold px-1.5 py-0.5 rounded-full text-white" style={{ background: "rgba(0,0,0,0.55)" }}>
                           {c.match}% ✓
                         </div>
                       </div>

@@ -3,6 +3,10 @@
 import { useRef } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
 import { Sparkles, Search, TrendingUp, Star, Users, Target, ArrowRight, CheckCircle2 } from "lucide-react";
+import Image from "next/image";
+import novaBeautyImg from "@/assets/nova.beauty.png";
+import styleWorldImg from "@/assets/style.world.jpg";
+import fitlifeImg from "@/assets/fitlife.jpg";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 32 },
@@ -17,7 +21,7 @@ const creators = [
     followers: "2.4M",
     engRate: "5.2%",
     match: 96,
-    gradient: "from-pink-500 to-rose-600",
+    img: novaBeautyImg,
     tags: ["Skincare", "Makeup", "Tutorials"],
   },
   {
@@ -26,7 +30,7 @@ const creators = [
     followers: "1.8M",
     engRate: "4.8%",
     match: 91,
-    gradient: "from-violet-500 to-purple-700",
+    img: styleWorldImg,
     tags: ["Street Style", "Hauls", "OOTDs"],
   },
   {
@@ -35,7 +39,7 @@ const creators = [
     followers: "980K",
     engRate: "7.1%",
     match: 88,
-    gradient: "from-emerald-500 to-teal-600",
+    img: fitlifeImg,
     tags: ["Fitness", "Nutrition", "Health"],
   },
 ];
@@ -88,8 +92,8 @@ export function AIMatchSection() {
                 { icon: Star, text: "Fake-follower and engagement fraud detection built in" },
                 { icon: Users, text: "Cross-platform discovery: TikTok, Instagram, YouTube" },
               ].map((item, i) => (
-                <motion.li key={i} variants={fadeUp} className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style={{ background: "rgba(124,58,237,0.15)", border: "1px solid rgba(124,58,237,0.25)" }}>
+                <motion.li key={i} variants={fadeUp} className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(124,58,237,0.15)", border: "1px solid rgba(124,58,237,0.25)" }}>
                     <item.icon size={15} style={{ color: "#a78bfa" }} />
                   </div>
                   <span className="text-slate-300 text-sm leading-relaxed">{item.text}</span>
@@ -137,7 +141,9 @@ export function AIMatchSection() {
                   className="rounded-2xl p-4 flex items-center gap-4 transition-all duration-300 hover:scale-[1.01] cursor-pointer"
                   style={{ background: "rgba(255,255,255,0.035)", border: "1px solid var(--border-card-strong)" }}
                 >
-                  <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${c.gradient} shrink-0`} />
+                  <div className="w-12 h-12 rounded-full overflow-hidden shrink-0">
+                    <Image src={c.img} alt={c.name} width={48} height={48} className="w-full h-full object-cover" />
+                  </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-0.5">
                       <span className="text-white font-medium text-sm">{c.name}</span>

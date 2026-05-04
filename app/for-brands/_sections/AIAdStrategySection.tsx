@@ -40,18 +40,40 @@ const adFormats = [
   },
 ];
 
-const chatMessages = [
-  { role: "user", text: "We sell premium skincare. Target: women 25–34. Platform: TikTok. What ad format should we use?" },
+const strategyContent = [
   {
-    role: "ai",
-    text: null,
-    suggestions: [
-      { format: "Storytelling (60s reel)", roi: "3.2×", reason: "Top performer for skincare. Emotional narrative + before/after = 68% higher purchase intent." },
-      { format: "Unboxing short", roi: "2.7×", reason: "High shareability. Perfect for new product launches with surprise elements." },
+    userMsg: "We sell premium skincare. Target: women 25–34. TikTok. What ad format?",
+    accentColor: "#a78bfa",
+    accentBg: "rgba(167,139,250,0.1)",
+    accentBorder: "rgba(167,139,250,0.25)",
+    recommendations: [
+      { rank: 1, format: "Storytelling (60s reel)", roi: "3.2×", color: "#a78bfa" },
+      { rank: 2, format: "Unboxing short (15-30s)", roi: "2.7×", color: "#38bdf8" },
     ],
+    analysis: "Based on 2,840 similar campaigns. Storytelling drives 68% higher purchase intent — emotional connection is key for this demographic.",
   },
-  { role: "user", text: "Which creators should deliver this?" },
-  { role: "ai", text: null, typing: true },
+  {
+    userMsg: "New consumer electronics launch. What format converts fastest on TikTok?",
+    accentColor: "#38bdf8",
+    accentBg: "rgba(56,189,248,0.1)",
+    accentBorder: "rgba(56,189,248,0.25)",
+    recommendations: [
+      { rank: 1, format: "Unboxing short (15-30s)", roi: "2.7×", color: "#38bdf8" },
+      { rank: 2, format: "Comparison reel (30-45s)", roi: "2.4×", color: "#34d399" },
+    ],
+    analysis: "Short-form unboxing outperforms in impulse-buy categories. Generates 3.1× more shares — ideal for launch momentum and product discovery.",
+  },
+  {
+    userMsg: "We're entering a crowded market. How do we differentiate our ad content?",
+    accentColor: "#34d399",
+    accentBg: "rgba(52,211,153,0.1)",
+    accentBorder: "rgba(52,211,153,0.25)",
+    recommendations: [
+      { rank: 1, format: "Comparison breakdown (45s)", roi: "2.4×", color: "#34d399" },
+      { rank: 2, format: "Storytelling narrative (60s)", roi: "2.1×", color: "#a78bfa" },
+    ],
+    analysis: "Feature-to-feature comparisons build trust in competitive markets. 42% higher conversion rate vs. generic ads — viewers self-qualify before clicking.",
+  },
 ];
 
 export function AIAdStrategySection() {
@@ -158,78 +180,81 @@ export function AIAdStrategySection() {
 
               {/* Messages */}
               <div className="p-4 space-y-3 min-h-[300px]">
-                {/* User message */}
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.3 }}
-                  className="flex justify-end"
-                >
-                  <div className="max-w-[85%] rounded-2xl rounded-tr-sm px-4 py-3 text-sm text-white" style={{ background: "rgba(124,58,237,0.3)", border: "1px solid rgba(124,58,237,0.4)" }}>
-                    We sell premium skincare. Target: women 25–34. TikTok. What ad format?
-                  </div>
-                </motion.div>
-
-                {/* AI Response */}
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.55 }}
-                >
-                  <div className="max-w-[92%] rounded-2xl rounded-tl-sm p-4" style={{ background: "rgba(52,211,153,0.1)", border: "1px solid rgba(52,211,153,0.25)" }}>
-                    <div className="flex items-center gap-1.5 mb-3">
-                      <Sparkles size={11} className="text-emerald-400" />
-                      <span className="text-[10px] font-semibold text-emerald-400">AI RECOMMENDATION</span>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeFormat}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                    className="space-y-3"
+                  >
+                    {/* User message */}
+                    <div className="flex justify-end">
+                      <div className="max-w-[85%] rounded-2xl rounded-tr-sm px-4 py-3 text-sm text-white" style={{ background: "rgba(124,58,237,0.3)", border: "1px solid rgba(124,58,237,0.4)" }}>
+                        {strategyContent[activeFormat].userMsg}
+                      </div>
                     </div>
-                    <div className="space-y-2">
-                      {[
-                        { rank: 1, format: "Storytelling (60s reel)", roi: "3.2×", color: "#a78bfa" },
-                        { rank: 2, format: "Unboxing short (15-30s)", roi: "2.7×", color: "#38bdf8" },
-                      ].map((item) => (
-                        <div key={item.rank} className="flex items-center gap-2 text-sm">
-                          <span className="w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center shrink-0" style={{ background: `${item.color}22`, color: item.color }}>
-                            {item.rank}
+
+                    {/* AI Response */}
+                    <div>
+                      <div
+                        className="max-w-[92%] rounded-2xl rounded-tl-sm p-4"
+                        style={{
+                          background: strategyContent[activeFormat].accentBg,
+                          border: `1px solid ${strategyContent[activeFormat].accentBorder}`,
+                        }}
+                      >
+                        <div className="flex items-center gap-1.5 mb-3">
+                          <Sparkles size={11} style={{ color: strategyContent[activeFormat].accentColor }} />
+                          <span className="text-[10px] font-semibold" style={{ color: strategyContent[activeFormat].accentColor }}>
+                            AI RECOMMENDATION
                           </span>
-                          <span className="text-slate-200 font-medium text-xs flex-1">{item.format}</span>
-                          <span className="text-xs font-bold" style={{ color: item.color }}>{item.roi} ROI</span>
                         </div>
-                      ))}
+                        <div className="space-y-2">
+                          {strategyContent[activeFormat].recommendations.map((item) => (
+                            <motion.div
+                              key={item.rank}
+                              initial={{ opacity: 0, x: -8 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: item.rank * 0.08, duration: 0.25 }}
+                              className="flex items-center gap-2"
+                            >
+                              <span className="w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center shrink-0" style={{ background: `${item.color}22`, color: item.color }}>
+                                {item.rank}
+                              </span>
+                              <span className="text-slate-200 font-medium text-xs flex-1">{item.format}</span>
+                              <span className="text-xs font-bold" style={{ color: item.color }}>{item.roi} ROI</span>
+                            </motion.div>
+                          ))}
+                        </div>
+                        <p className="text-[11px] text-slate-400 mt-3 leading-relaxed">
+                          {strategyContent[activeFormat].analysis}
+                        </p>
+                      </div>
                     </div>
-                    <p className="text-[11px] text-slate-400 mt-3 leading-relaxed">
-                      Based on 2,840 similar campaigns. Storytelling drives 68% higher purchase intent for this demographic.
-                    </p>
-                  </div>
-                </motion.div>
 
-                {/* Second user message */}
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.8 }}
-                  className="flex justify-end"
-                >
-                  <div className="max-w-[75%] rounded-2xl rounded-tr-sm px-4 py-3 text-sm text-white" style={{ background: "rgba(124,58,237,0.3)", border: "1px solid rgba(124,58,237,0.4)" }}>
-                    Which creators should deliver this?
-                  </div>
-                </motion.div>
+                    {/* Second user message */}
+                    <div className="flex justify-end">
+                      <div className="max-w-[75%] rounded-2xl rounded-tr-sm px-4 py-3 text-sm text-white" style={{ background: "rgba(124,58,237,0.3)", border: "1px solid rgba(124,58,237,0.4)" }}>
+                        Which creators should deliver this?
+                      </div>
+                    </div>
 
-                {/* Typing indicator */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : {}}
-                  transition={{ delay: 1.1 }}
-                  className="flex items-center gap-2"
-                >
-                  <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ background: "linear-gradient(135deg, #7c3aed, #0891b2)" }}>
-                    <Brain size={12} className="text-white" />
-                  </div>
-                  <div className="flex items-center gap-1 px-3 py-2 rounded-2xl" style={{ background: "var(--bg-card-hover)", border: "1px solid var(--border-card-strong)" }}>
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce" style={{ animationDelay: "0ms" }} />
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce" style={{ animationDelay: "150ms" }} />
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce" style={{ animationDelay: "300ms" }} />
-                  </div>
-                  <span className="text-[10px] text-slate-600">Analyzing creator database...</span>
-                </motion.div>
+                    {/* Typing indicator */}
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style={{ background: "linear-gradient(135deg, #7c3aed, #0891b2)" }}>
+                        <Brain size={12} className="text-white" />
+                      </div>
+                      <div className="flex items-center gap-1 px-3 py-2 rounded-2xl" style={{ background: "var(--bg-card-hover)", border: "1px solid var(--border-card-strong)" }}>
+                        <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce" style={{ animationDelay: "0ms" }} />
+                        <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce" style={{ animationDelay: "150ms" }} />
+                        <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce" style={{ animationDelay: "300ms" }} />
+                      </div>
+                      <span className="text-[10px] text-slate-600">Analyzing creator database...</span>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
               </div>
 
               {/* Input area */}

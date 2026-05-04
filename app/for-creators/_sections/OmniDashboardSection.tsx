@@ -65,8 +65,8 @@ export function OmniDashboardSection() {
                 { icon: Bell, text: "Deadline alerts for brand campaign deliverables" },
                 { icon: BarChart3, text: "Real-time cross-platform analytics in one view" },
               ].map((item, i) => (
-                <motion.li key={i} variants={fadeUp} transition={{ duration: 0.5 }} className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style={{ background: "rgba(192,132,252,0.12)", border: "1px solid rgba(192,132,252,0.25)" }}>
+                <motion.li key={i} variants={fadeUp} transition={{ duration: 0.5 }} className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(192,132,252,0.12)", border: "1px solid rgba(192,132,252,0.25)" }}>
                     <item.icon size={15} style={{ color: VIOLET }} />
                   </div>
                   <span className="text-slate-300 text-sm leading-relaxed">{item.text}</span>

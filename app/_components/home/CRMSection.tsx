@@ -3,6 +3,10 @@
 import { useRef } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
 import { Database, FileText, Users, Rocket, BarChart3, ArrowRight, CheckCircle2 } from "lucide-react";
+import Image from "next/image";
+import techUnboxingImg from "@/assets/tech-unboxing.jpg";
+import springCollectionImg from "@/assets/spring-collection.jpg";
+import videographyImg from "@/assets/videography.jpg";
 
 const fadeUp: Variants = { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0 } };
 const stagger: Variants = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
@@ -10,9 +14,9 @@ const stagger: Variants = { hidden: {}, visible: { transition: { staggerChildren
 const EMERALD = "#34d399";
 
 const campaigns = [
-  { title: "Tech Unboxing Series", creators: 5, engagement: "6.2%", status: "In Progress", statusColor: "#fcd34d", color: "from-blue-500 to-cyan-500" },
-  { title: "Spring Collection Lifestyle", creators: 8, engagement: "4.8%", status: "Review", statusColor: "#67e8f9", color: "from-pink-500 to-rose-600" },
-  { title: "Videography Contest", creators: 11, engagement: "5.9%", status: "Completed", statusColor: "#34d399", color: "from-violet-500 to-purple-600" },
+  { title: "Tech Unboxing Series", creators: 5, engagement: "6.2%", status: "In Progress", statusColor: "#fcd34d", img: techUnboxingImg },
+  { title: "Spring Collection Lifestyle", creators: 8, engagement: "4.8%", status: "Review", statusColor: "#67e8f9", img: springCollectionImg },
+  { title: "Videography Contest", creators: 11, engagement: "5.9%", status: "Completed", statusColor: "#34d399", img: videographyImg },
 ];
 
 export function CRMSection() {
@@ -54,8 +58,8 @@ export function CRMSection() {
                 { icon: BarChart3, text: "Live analytics: reach, engagement, ROI across all campaigns" },
                 { icon: Rocket, text: "Save time on admin — focus on scaling your campaigns" },
               ].map((item, i) => (
-                <motion.li key={i} variants={fadeUp} transition={{ duration: 0.5 }} className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style={{ background: "rgba(52,211,153,0.12)", border: "1px solid rgba(52,211,153,0.25)" }}>
+                <motion.li key={i} variants={fadeUp} transition={{ duration: 0.5 }} className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(52,211,153,0.12)", border: "1px solid rgba(52,211,153,0.25)" }}>
                     <item.icon size={15} style={{ color: EMERALD }} />
                   </div>
                   <span className="text-slate-300 text-sm leading-relaxed">{item.text}</span>
@@ -112,7 +116,9 @@ export function CRMSection() {
                     className="flex items-center gap-3 rounded-2xl p-3.5 transition-all hover:bg-white/[0.02] cursor-pointer"
                     style={{ background: "var(--bg-card-subtle)", border: "1px solid var(--border-card)" }}
                   >
-                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${c.color} shrink-0`} />
+                    <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0">
+                      <Image src={c.img} alt={c.title} width={40} height={40} className="w-full h-full object-cover" />
+                    </div>
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-semibold text-slate-200 truncate leading-tight">{c.title}</div>
                       <div className="text-[10px] text-slate-500 mt-0.5">{c.creators} creators · Eng {c.engagement}</div>
