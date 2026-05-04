@@ -10,10 +10,10 @@ const stagger: Variants = { hidden: {}, visible: { transition: { staggerChildren
 const CYAN = "#67e8f9";
 
 const emails = [
-  { brand: "Nike", subject: "Partnership Opportunity — Q3 Campaign", preview: "Hi! We'd love to collaborate on our upcoming summer...", time: "2m ago", unread: true, tag: "New Deal", tagColor: "#34d399", color: "from-orange-500 to-red-500" },
-  { brand: "Glossier", subject: "✓ Contract Signed — Welcome aboard!", preview: "Your partnership agreement has been confirmed. Here's...", time: "1h ago", unread: true, tag: "Active", tagColor: "#67e8f9", color: "from-pink-400 to-rose-500" },
-  { brand: "Notion", subject: "Re: Content brief feedback", preview: "Thanks for the revision! The brief looks great. We'll...", time: "3h ago", unread: false, tag: "Follow-up", tagColor: "#fcd34d", color: "from-slate-500 to-slate-700" },
-  { brand: "Razer", subject: "Payment processed — $2,100", preview: "Your invoice for the gaming peripheral review has been...", time: "1d ago", unread: false, tag: "Paid", tagColor: "#a78bfa", color: "from-emerald-500 to-teal-600" },
+  { brand: "Samsung", subject: "Partnership Opportunity — Q3 Campaign", preview: "Hi! We'd love to collaborate on our upcoming tech...", time: "2m ago", unread: true, tag: "New Deal", tagColor: "#34d399", avatarBg: "#1428a0", avatarColor: "#ffffff", initial: "S" },
+  { brand: "ASOS", subject: "✓ Contract Signed — Welcome aboard!", preview: "Your partnership agreement has been confirmed. Here's...", time: "1h ago", unread: true, tag: "Active", tagColor: "#67e8f9", avatarBg: "#2d2d2d", avatarColor: "#ffffff", initial: "A" },
+  { brand: "Levi's", subject: "Re: Content brief feedback", preview: "Thanks for the revision! The brief looks great. We'll...", time: "3h ago", unread: false, tag: "Follow-up", tagColor: "#fcd34d", avatarBg: "#c41230", avatarColor: "#ffffff", initial: "L" },
+  { brand: "SteelSeries", subject: "Payment processed — $2,100", preview: "Your invoice for the peripheral review has been paid...", time: "1d ago", unread: false, tag: "Paid", tagColor: "#a78bfa", avatarBg: "#ff4500", avatarColor: "#ffffff", initial: "S" },
 ];
 
 const dealPipeline = [
@@ -74,7 +74,7 @@ export function MailCRMSection() {
                     transition={{ delay: 0.3 + i * 0.1 }}
                     className="flex gap-3 px-5 py-3.5 cursor-pointer transition-all hover:bg-white/[0.02] group"
                   >
-                    <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${email.color} shrink-0 mt-0.5`} />
+                    <div className="w-9 h-9 rounded-full shrink-0 mt-0.5 flex items-center justify-center text-[12px] font-bold" style={{ background: email.avatarBg, color: email.avatarColor }}>{email.initial}</div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-0.5">
                         <span className={`text-xs font-semibold ${email.unread ? "text-white" : "text-slate-400"}`}>{email.brand}</span>
@@ -125,8 +125,8 @@ export function MailCRMSection() {
                 { icon: Bell, text: "Smart reminders when brands go quiet — so you never lose a deal" },
                 { icon: CheckCircle2, text: "Full partnership history and payment tracking in one timeline" },
               ].map((item, i) => (
-                <motion.li key={i} variants={fadeUp} transition={{ duration: 0.5 }} className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style={{ background: "rgba(103,232,249,0.12)", border: "1px solid rgba(103,232,249,0.25)" }}>
+                <motion.li key={i} variants={fadeUp} transition={{ duration: 0.5 }} className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(103,232,249,0.12)", border: "1px solid rgba(103,232,249,0.25)" }}>
                     <item.icon size={15} style={{ color: CYAN }} />
                   </div>
                   <span className="text-slate-300 text-sm leading-relaxed">{item.text}</span>

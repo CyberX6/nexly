@@ -7,7 +7,6 @@ import { BentoSection } from "@/app/_components/home/BentoSection";
 import { SearchSection } from "@/app/_components/home/SearchSection";
 import { OutreachSection } from "@/app/_components/home/OutreachSection";
 import { CRMSection } from "@/app/_components/home/CRMSection";
-import { UseCasesSection } from "@/app/_components/home/UseCasesSection";
 import { ToolsSection } from "@/app/_components/home/ToolsSection";
 import { FAQSection } from "@/app/_components/home/FAQSection";
 import { FinalCTASection } from "@/app/_components/home/FinalCTASection";
@@ -33,7 +32,6 @@ export default function Page() {
         <SearchSection />
         <OutreachSection />
         <CRMSection />
-        <UseCasesSection />
         <ToolsSection />
         <FAQSection />
         <FinalCTASection />

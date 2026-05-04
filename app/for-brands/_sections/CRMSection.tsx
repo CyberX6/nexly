@@ -17,6 +17,12 @@ import {
   Star,
   ChevronRight,
 } from "lucide-react";
+import Image from "next/image";
+import novaBeautyImg from "@/assets/nova.beauty.png";
+import styleWorldImg from "@/assets/style.world.jpg";
+import fitlifeImg from "@/assets/fitlife.jpg";
+import techguruImg from "@/assets/techguru.jpg";
+import marcusImg from "@/assets/marucs.jpg";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 32 },
@@ -25,11 +31,11 @@ const fadeUp: Variants = {
 const stagger: Variants = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
 
 const creators = [
-  { name: "@nova.beauty", platform: "TikTok", followers: "1.8M", status: "Active", statusColor: "#34d399", deals: 3, color: "from-pink-500 to-rose-600" },
-  { name: "@style.world", platform: "Instagram", followers: "2.1M", status: "Negotiating", statusColor: "#fcd34d", deals: 1, color: "from-violet-500 to-purple-600" },
-  { name: "@fitlife.co", platform: "YouTube", followers: "980K", status: "Pending", statusColor: "#7dd3fc", deals: 0, color: "from-emerald-500 to-teal-600" },
-  { name: "@techguru", platform: "TikTok", followers: "560K", status: "Completed", statusColor: "#a78bfa", deals: 5, color: "from-blue-500 to-cyan-500" },
-  { name: "@travel.joe", platform: "Instagram", followers: "1.3M", status: "Active", statusColor: "#34d399", deals: 2, color: "from-amber-500 to-orange-500" },
+  { name: "@nova.beauty", platform: "TikTok", followers: "1.8M", status: "Active", statusColor: "#34d399", deals: 3, img: novaBeautyImg },
+  { name: "@style.world", platform: "Instagram", followers: "2.1M", status: "Negotiating", statusColor: "#fcd34d", deals: 1, img: styleWorldImg },
+  { name: "@fitlife.co", platform: "YouTube", followers: "980K", status: "Pending", statusColor: "#7dd3fc", deals: 0, img: fitlifeImg },
+  { name: "@techguru", platform: "TikTok", followers: "560K", status: "Completed", statusColor: "#a78bfa", deals: 5, img: techguruImg },
+  { name: "@travel.joe", platform: "Instagram", followers: "1.3M", status: "Active", statusColor: "#34d399", deals: 2, img: marcusImg },
 ];
 
 const emailTemplate = {
@@ -117,7 +123,9 @@ export function CRMSection() {
                   className="grid grid-cols-5 gap-2 items-center px-5 py-3 transition-all hover:bg-white/[0.02] cursor-pointer group"
                 >
                   <div className="col-span-2 flex items-center gap-3">
-                    <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${c.color} shrink-0`} />
+                    <div className="w-8 h-8 rounded-full overflow-hidden shrink-0">
+                      <Image src={c.img} alt={c.name} width={32} height={32} className="w-full h-full object-cover" />
+                    </div>
                     <div>
                       <div className="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">{c.name}</div>
                       <div className="text-[10px] text-slate-600">{c.followers}</div>

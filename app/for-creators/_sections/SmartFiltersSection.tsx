@@ -17,9 +17,9 @@ const allNiches = [
 ];
 
 const incomingDeals = [
-  { brand: "Nike", niche: "Fitness", offer: "$1,200", match: 97, color: "from-orange-500 to-red-500" },
-  { brand: "Glossier", niche: "Beauty", offer: "$850", match: 94, color: "from-pink-400 to-rose-500" },
-  { brand: "Razer", niche: "Gaming", offer: "$2,100", match: 91, color: "from-emerald-500 to-teal-600" },
+  { brand: "Gymshark", niche: "Fitness", offer: "$1,200", match: 97, avatarBg: "#000000", avatarColor: "#ffffff", initial: "G" },
+  { brand: "Charlotte T.", niche: "Beauty", offer: "$850", match: 94, avatarBg: "#e8c4d0", avatarColor: "#9b2f4e", initial: "C" },
+  { brand: "Razer", niche: "Gaming", offer: "$2,100", match: 91, avatarBg: "#00ff00", avatarColor: "#000000", initial: "R" },
 ];
 
 export function SmartFiltersSection() {
@@ -150,7 +150,7 @@ export function SmartFiltersSection() {
                       className="flex items-center gap-3 rounded-xl p-3"
                       style={{ background: "var(--bg-card-subtle)", border: "1px solid var(--border-card)" }}
                     >
-                      <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${deal.color} shrink-0`} />
+                      <div className="w-8 h-8 rounded-full shrink-0 flex items-center justify-center text-[11px] font-bold" style={{ background: deal.avatarBg, color: deal.avatarColor }}>{deal.initial}</div>
                       <div className="flex-1 min-w-0">
                         <div className="text-xs font-semibold text-slate-200">{deal.brand}</div>
                         <div className="text-[10px] text-slate-500">{deal.niche} · {deal.offer}</div>
@@ -186,8 +186,8 @@ export function SmartFiltersSection() {
                 { icon: Globe, text: "Choose your preferred regions and brand markets" },
                 { icon: CheckCircle2, text: "AI re-ranks deals daily based on what performs for your audience" },
               ].map((item, i) => (
-                <motion.li key={i} variants={fadeUp} transition={{ duration: 0.5 }} className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style={{ background: "rgba(244,114,182,0.12)", border: "1px solid rgba(244,114,182,0.25)" }}>
+                <motion.li key={i} variants={fadeUp} transition={{ duration: 0.5 }} className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(244,114,182,0.12)", border: "1px solid rgba(244,114,182,0.25)" }}>
                     <item.icon size={15} style={{ color: PINK }} />
                   </div>
                   <span className="text-slate-300 text-sm leading-relaxed">{item.text}</span>
