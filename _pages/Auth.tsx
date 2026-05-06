@@ -28,7 +28,7 @@ const Auth = () => {
 
   const { user, profile, signUp, signIn, signInWithProvider } = useAuth();
   const { toast } = useToast();
-  const oauthCallbackURL = "http://localhost:3000/feed";
+  const oauthCallbackURL = `${process.env.NEXT_PUBLIC_APP_URL}/feed`;
 
   // Redirect if already logged in
   useEffect(() => {

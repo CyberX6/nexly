@@ -107,7 +107,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   ): Promise<{ error: Error | null }> => {
     const result = await baSignIn.social({
       provider,
-      callbackURL: callbackURL ?? "http://localhost:3000/feed",
+      callbackURL: callbackURL ?? process.env.NEXT_PUBLIC_APP_URL + "/feed",
     });
 
     return { error: result.error ? new Error(result.error.message) : null };

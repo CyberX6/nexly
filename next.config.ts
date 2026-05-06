@@ -1,5 +1,17 @@
 import type { NextConfig } from "next";
 
+const allowedOrigins = (process.env.ALLOWED_ORIGINS ?? "")
+  .split(",")
+  .map((o) => o.trim())
+  .filter(Boolean);
+
+const corsHeaders = (origin: string) => [
+  { key: "Access-Control-Allow-Origin", value: origin },
+  { key: "Access-Control-Allow-Methods", value: "GET,POST,PUT,PATCH,DELETE,OPTIONS" },
+  { key: "Access-Control-Allow-Headers", value: "Content-Type, Authorization" },
+  { key: "Access-Control-Allow-Credentials", value: "true" },
+];
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
@@ -8,6 +20,15 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
       },
     ],
+  },
+  async headers() {
+    return allowedOrigins.flatMap((origin) => [
+      {
+        source: "/:path*",
+        has: [{ type: "header" as const, key: "origin", value: origin }],
+        headers: corsHeaders(origin),
+      },
+    ]);
   },
   async redirects() {
     return [

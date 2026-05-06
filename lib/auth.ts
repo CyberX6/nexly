@@ -33,7 +33,7 @@ export const auth = betterAuth({
     },
   },
 
-  baseURL: "http://localhost:3000",
+  baseURL: process.env.APP_URL ?? process.env.NEXT_PUBLIC_APP_URL,
   secret: process.env.BETTER_AUTH_SECRET!,
 });
 
