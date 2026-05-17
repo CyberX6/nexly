@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Sparkles, ArrowRight, TrendingUp, Users, Zap, Clock, Loader2, CheckCircle2 } from "lucide-react";
 
 const stats = [
-  { value: "10M+", label: "Creators indexed", icon: Users },
+  { value: "10K+", label: "Creators indexed", icon: Users },
   { value: "96%", label: "Match accuracy", icon: Sparkles },
   { value: "3.2x", label: "Avg. ROI increase", icon: TrendingUp },
   { value: "48h", label: "Campaign launch", icon: Clock },
@@ -52,13 +52,26 @@ export function HeroSection() {
     <section className="relative min-h-screen flex items-center overflow-hidden bg-[var(--bg-page)]">
       {/* Ambient glows */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/3 w-[700px] h-[700px] rounded-full blur-[140px]" style={{ background: "radial-gradient(circle, var(--glow-purple) 0%, transparent 70%)" }} />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full blur-[120px]" style={{ background: "radial-gradient(circle, var(--glow-cyan) 0%, transparent 70%)" }} />
+        <div
+          className="absolute top-0 left-1/3 w-[700px] h-[700px] rounded-full blur-[140px]"
+          style={{
+            background:
+              "radial-gradient(circle, var(--glow-purple) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full blur-[120px]"
+          style={{
+            background:
+              "radial-gradient(circle, var(--glow-cyan) 0%, transparent 70%)",
+          }}
+        />
         {/* Dot grid */}
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "radial-gradient(circle, var(--bg-card-hover) 1px, transparent 1px)",
+            backgroundImage:
+              "radial-gradient(circle, var(--bg-card-hover) 1px, transparent 1px)",
             backgroundSize: "36px 36px",
           }}
         />
@@ -116,7 +129,8 @@ export function HeroSection() {
             transition={{ delay: 0.35, duration: 0.7 }}
             className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            Leverage AI to find your perfect match, manage massive campaigns, and dominate social media.
+            Leverage AI to find your perfect match, manage massive campaigns,
+            and dominate social media.
           </motion.p>
 
           {/* Email CTA */}
@@ -182,7 +196,8 @@ export function HeroSection() {
               ))}
             </div>
             <span>
-              Join <strong className="text-slate-300">2,400+</strong> brands on the waitlist
+              Join <strong className="text-slate-300">2,400+</strong> brands on
+              the waitlist
             </span>
           </motion.div>
         </motion.div>
@@ -226,9 +241,7 @@ export function HeroSection() {
           transition={{ delay: 1.2 }}
           className="flex justify-center mt-16"
         >
-          <div
-            className="flex flex-col items-center gap-1 text-slate-700 animate-bounce"
-          >
+          <div className="flex flex-col items-center gap-1 text-slate-700 animate-bounce">
             <div className="w-px h-8 bg-gradient-to-b from-transparent to-slate-700" />
             <Zap size={12} />
           </div>
